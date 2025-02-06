@@ -1,0 +1,84 @@
+﻿@model IEnumerable<biblioteca.Models.Domain.Usuario>
+
+@await Html.PartialAsync("_Sidebar")
+
+<div class="container mt-4" style="margin-left: 150px;">
+    <h1 class="text-center text-primary mb-4">Dashboard de Usuarios</h1>
+
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-dark text-white text-center">
+            <h2 class="mb-0">Lista de Usuarios</h2>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                @if (Model.Count() > 0)
+                {
+                    <table class="table table-hover table-bordered" id="tblUsuarios">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>@Html.DisplayNameFor(x => x.PkUsuario)</th>
+                                <th>@Html.DisplayNameFor(x => x.Nombre)</th>
+                                <th>@Html.DisplayNameFor(x => x.UserName)</th>
+                                <th>@Html.DisplayNameFor(x => x.Password)</th>
+                                <th>@Html.DisplayNameFor(x => x.FkRol)</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var usuario in Model)
+                            {
+                                <tr>
+                                    <td>@usuario.PkUsuario</td>
+                                    <td>@usuario.Nombre</td>
+                                    <td>@usuario.UserName</td>
+                                    <td>@usuario.Password</td>
+                                    <td>@usuario.FkRol</td>
+                                    <td class="text-center">
+                                        <a class="btn btn-warning btn-sm" asp-action="Editar" asp-route-id="@usuario.PkUsuario">
+                                            <i class="fa-solid fa-pen-to-square"></i> Editar
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" asp-action="Eliminar" asp-route-id="@usuario.PkUsuario">
+                                            <i class="fa-solid fa-trash"></i> Eliminar
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p class="text-center text-muted">No hay registros disponibles</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#tblUsuarios').DataTable({
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 a 0 de 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Último",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+        });
+    </script>
+}
