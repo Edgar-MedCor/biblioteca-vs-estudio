@@ -8,7 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Agregar servicios
 builder.Services.AddTransient<IUsuarioServices, UsuarioServices>();
+builder.Services.AddTransient<IRolServices, RolServices>(); // <-- Agregar esta línea
 
 builder.Services.AddControllersWithViews();
 
@@ -22,5 +24,12 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Usuario}/{action=Index}/{id?}");
+app.MapControllerRoute(
+    name: "roles",
+    pattern: "Rol/{action=Index}/{id?}",
+    defaults: new { controller = "Rol" }
+);
+
+
 
 app.Run();

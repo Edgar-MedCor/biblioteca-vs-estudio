@@ -1,0 +1,51 @@
+﻿@model IEnumerable<biblioteca.Models.Domain.Rol>
+@await Html.PartialAsync("_Sidebar")
+
+<div class="container mt-4 d-flex justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-lg p-4">
+            <h2 class="text-center mb-4">Lista de Roles</h2>
+
+            <div class="text-end mb-3">
+                <a asp-action="Crear" class="btn btn-primary">
+                    <i class="bi bi-plus-lg"></i> Agregar Rol
+                </a>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered text-center">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var rol in Model)
+                        {
+                            <tr>
+                                <td>@rol.PkRol</td>
+                                <td>@rol.Nombre</td>
+                                <td>
+                                    <a asp-controller="Rol" asp-action="Editar" asp-route-id="@rol.PkRol"
+                                       class="btn btn-warning btn-sm">
+                                        <i class="bi bi-pencil-fill"></i> Editar
+                                    </a>
+
+                                    <form asp-controller="Rol" asp-action="Eliminar" asp-route-id="@rol.PkRol"
+                                          method="post" class="d-inline">
+                                        <button type="submit" class="btn btn-danger btn-sm"
+                                                onclick="return confirm('¿Seguro que deseas eliminar este rol?');">
+                                            <i class="bi bi-trash-fill"></i> Eliminar
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

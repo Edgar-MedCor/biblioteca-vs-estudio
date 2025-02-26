@@ -1,18 +1,26 @@
 ﻿@model IEnumerable<biblioteca.Models.Domain.Usuario>
 
+
+
 @await Html.PartialAsync("_Sidebar")
 
 <div class="container mt-4" style="margin-left: 150px;">
-    <h1 class="text-center text-primary mb-4">Dashboard de Usuarios</h1>
+    <h1 class="text-center text-primary mb-4">Lista de Usuarios</h1>
 
     <div class="card shadow-lg border-0">
         <div class="card-header bg-dark text-white text-center">
-            <h2 class="mb-0">Lista de Usuarios</h2>
+            <h2 class="mb-0">Usuarios</h2>
         </div>
 
         <div class="card-body">
+            <div class="d-flex justify-content-between mb-3">
+                <a class="btn btn-success" asp-action="Crear">
+                    <i class="fa-solid fa-user-plus"></i> Crear Usuario
+                </a>
+            </div>
+
             <div class="table-responsive">
-                @if (Model.Count() > 0)
+                @if (Model.Any())
                 {
                     <table class="table table-hover table-bordered" id="tblUsuarios">
                         <thead class="table-dark">
@@ -21,7 +29,7 @@
                                 <th>@Html.DisplayNameFor(x => x.Nombre)</th>
                                 <th>@Html.DisplayNameFor(x => x.UserName)</th>
                                 <th>@Html.DisplayNameFor(x => x.Password)</th>
-                                <th>@Html.DisplayNameFor(x => x.FkRol)</th>
+                                <th>Rol</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -33,7 +41,7 @@
                                     <td>@usuario.Nombre</td>
                                     <td>@usuario.UserName</td>
                                     <td>@usuario.Password</td>
-                                    <td>@usuario.FkRol</td>
+                                    <td>@(usuario.Rol?.Nombre ?? "Sin rol")</td>
                                     <td class="text-center">
                                         <a class="btn btn-warning btn-sm" asp-action="Editar" asp-route-id="@usuario.PkUsuario">
                                             <i class="fa-solid fa-pen-to-square"></i> Editar

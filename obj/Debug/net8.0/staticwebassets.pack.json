@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "C:\\Users\\edgar\\source\\repos\\biblioteca\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\biblioteca.bundle.scp.css",
-      "PackagePath": "staticwebassets\\biblioteca.bundle.scp.css"
+      "PackagePath": "staticwebassets\\biblioteca.8cn2r7fps7.bundle.scp.css"
     },
     {
       "Id": "C:\\Users\\edgar\\source\\repos\\biblioteca\\wwwroot\\css\\site.css",
@@ -243,6 +243,10 @@
     {
       "Id": "C:\\Users\\edgar\\source\\repos\\biblioteca\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.biblioteca.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.biblioteca.Microsoft.AspNetCore.StaticWebAssets.props",

@@ -1,0 +1,15 @@
+﻿@model biblioteca.Models.Domain.Rol
+
+<div class="container">
+    <h2>Editar Rol</h2>
+    <form asp-action="Editar" method="post">
+        <input asp-for="PkRol" type="hidden" />
+        <div class="form-group">
+            <label asp-for="Nombre"></label>
+            <input asp-for="Nombre" class="form-control" required />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Guardar</button>
+        <a asp-action="Index" class="btn btn-secondary mt-2">Volver</a>
+    </form>
+</div>
